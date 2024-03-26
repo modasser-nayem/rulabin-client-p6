@@ -20,26 +20,25 @@ export const sidebarItemsGenerator = ({
          });
       }
 
-      if (item?.children?.length && item.name) {
+      if (item?.children && item?.name) {
          acc.push({
             key: item.name,
             icon: item.icon,
             label: item.name,
             children: item.children.map((child) => {
-               if (child.name && child.path) {
-                  return {
-                     key: child.name,
-                     icon: child.icon,
-                     label: (
-                        <NavLink to={`${routePrefix}/${child.path}`}>
-                           {child.name}
-                        </NavLink>
-                     ),
-                  };
-               }
+               return {
+                  key: child.name || "",
+                  icon: child.icon,
+                  label: (
+                     <NavLink to={`${routePrefix}/${child.path}`}>
+                        {child.name}
+                     </NavLink>
+                  ),
+               };
             }),
          });
       }
+
       return acc;
    }, []);
 

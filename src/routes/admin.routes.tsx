@@ -19,6 +19,11 @@ export const adminRouteItems: TRoutesItem[] = [
             path: "users",
             element: <div>All Users</div>,
          },
+         {
+            name: "Update user",
+            path: "users/:id",
+            element: <div>Update Users</div>,
+         },
       ],
    },
 ];

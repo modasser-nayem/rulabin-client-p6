@@ -1,0 +1,12 @@
+.input-item-label {
+   font-weight: 700;
+}
+
+.input-item {
+   padding: 0.7rem 1rem;
+}
+
+.input-item:hover,
+.input-item:focus {
+   border-color: #019376;
+}

@@ -1,0 +1,48 @@
+.main-form {
+   border-radius: 5px;
+   padding: 2rem;
+   box-shadow: 5px 5px 15px rgb(176, 176, 176);
+   margin: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+   .main-form {
+      width: 350px;
+   }
+}
+
+.from-header {
+   text-align: center;
+}
+
+.from-header h3 {
+   font-size: 1.8rem;
+   font-weight: 600;
+   margin-bottom: 0;
+}
+
+.from-header p {
+   font-size: 18px;
+   font-style: italic;
+}
+
+.submit-btn {
+   background-color: #019376;
+   color: white;
+   font-size: 1rem;
+   font-weight: 700;
+   height: 3rem;
+}
+
+.submit-btn:hover {
+   background-color: #01866b !important;
+   color: white !important;
+}
+
+.bottom-header {
+   font-size: 16px;
+   text-align: center;
+}
+.bottom-header a {
+   color: #019376;
+}
