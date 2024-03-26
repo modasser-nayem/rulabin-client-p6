@@ -1,12 +1,12 @@
 import { Button, Divider, Row } from "antd";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import FormWrapper from "../../components/form/FromWrapper";
-import InputItem from "../../components/form/InputItem";
+import FormWrapper from "../../../components/form/FromWrapper";
+import InputItem from "../../../components/form/InputItem";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
-import { useRegisterUserMutation } from "../../redux/features/auth/authApi";
+import { useRegisterUserMutation } from "../../../redux/features/auth/authApi";
 import { toast } from "sonner";
-import rtqErrorMessageHandle from "../../utils/rtqErrorMessageHandle";
+import rtqErrorMessageHandle from "../../../utils/rtqErrorMessageHandle";
 import { useEffect } from "react";
 
 const Register = () => {

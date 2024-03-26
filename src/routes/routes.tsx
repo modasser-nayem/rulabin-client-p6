@@ -3,9 +3,10 @@ import App from "../App";
 import { routesGenerator } from "../utils/routesGenerator";
 import { adminRouteItems } from "./admin.routes";
 import DashboardLayout from "../components/layout/DashboardLayout";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import ForgotPassword from "../pages/ForgotPassword";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
+import ForgotPassword from "../pages/Auth/ForgotPassword";
+import ResetPassword from "../pages/Auth/ResetPassword";
 
 export const router = createBrowserRouter([
    {
@@ -54,5 +55,9 @@ export const router = createBrowserRouter([
    {
       path: "/forgot-password",
       element: <ForgotPassword />,
+   },
+   {
+      path: "/auth/reset-password",
+      element: <ResetPassword />,
    },
 ]);
