@@ -1,0 +1,13 @@
+.add-category-form {
+   background-color: white;
+   border-radius: 5px;
+   padding: 2rem;
+   display: flex;
+   justify-content: center;
+   margin-top: 10px;
+   width: 100%;
+}
+
+.add-category-form > div {
+   width: 600px;
+}

@@ -3,16 +3,16 @@ import FormWrapper from "../../../components/form/FromWrapper";
 import InputItem from "../../../components/form/InputItem";
 import "./style.css";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { useAddCategoryMutation } from "../../../redux/features/category/categoryApi";
 import { useEffect } from "react";
 import rtqErrorMessageHandle from "../../../utils/rtqErrorMessageHandle";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { useAddBrandMutation } from "../../../redux/features/Brand/brandApi";
 
-const AddCategory = () => {
+const AddBrand = () => {
    const navigate = useNavigate();
-   const [addNewCategory, { isSuccess, isLoading, error, data }] =
-      useAddCategoryMutation();
+   const [addNewBrand, { isSuccess, isLoading, error, data }] =
+      useAddBrandMutation();
 
    useEffect(() => {
       if (error) {
@@ -21,22 +21,22 @@ const AddCategory = () => {
 
       if (data) {
          toast.success(data.message);
-         navigate("/admin/categories");
+         navigate("/admin/brand");
       }
    }, [error, data, navigate]);
 
    const onSubmit: SubmitHandler<FieldValues> = (formData) => {
-      const addCategoryData = {
+      const addBrandData = {
          name: formData.name,
          icon: formData.icon,
       };
-      addNewCategory(addCategoryData);
+      addNewBrand(addBrandData);
    };
 
    return (
       <div className="categories">
          <div className="header">
-            <h2 className="title">Add Category</h2>
+            <h2 className="title">Add Brand</h2>
          </div>
          <div className="add-category-form">
             <div>
@@ -48,13 +48,13 @@ const AddCategory = () => {
                      label="name"
                      type="text"
                      name="name"
-                     placeholder="Enter category name"
+                     placeholder="Enter brand name"
                   />
                   <InputItem
                      label="Icon Link"
                      type="text"
                      name="icon"
-                     placeholder="Enter category icon link"
+                     placeholder="Enter brand icon link"
                   />
                   <Button
                      htmlType="submit"
@@ -62,7 +62,7 @@ const AddCategory = () => {
                      block
                      loading={isLoading}
                   >
-                     Add Category
+                     Add Brand
                   </Button>
                </FormWrapper>
             </div>
@@ -71,4 +71,4 @@ const AddCategory = () => {
    );
 };
 
-export default AddCategory;
+export default AddBrand;

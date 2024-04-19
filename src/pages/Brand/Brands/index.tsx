@@ -4,13 +4,13 @@ import "./style.css";
 import { FaPlus } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { Link } from "react-router-dom";
-import {
-   useDeleteCategoryMutation,
-   useGetAllCategoryQuery,
-} from "../../../redux/features/category/categoryApi";
 import { toast } from "sonner";
 import rtqErrorMessageHandle from "../../../utils/rtqErrorMessageHandle";
 import { useEffect } from "react";
+import {
+   useDeleteBrandMutation,
+   useGetAllBrandQuery,
+} from "../../../redux/features/Brand/brandApi";
 
 interface DataType {
    key: string;
@@ -18,17 +18,17 @@ interface DataType {
    icon: string;
 }
 
-const Categories = () => {
-   const { data, isLoading } = useGetAllCategoryQuery(undefined);
+const Brands = () => {
+   const { data, isLoading } = useGetAllBrandQuery(undefined);
 
    const [
-      deleteCategory,
+      deleteBrand,
       {
-         data: deleteCategoryData,
-         error: deleteCategoryError,
-         isLoading: deleteCategoryIsLoading,
+         data: deleteBrandData,
+         error: deleteBrandError,
+         isLoading: deleteBrandIsLoading,
       },
-   ] = useDeleteCategoryMutation();
+   ] = useDeleteBrandMutation();
 
    const onChange = (value: string) => {
       console.log(`selected ${value}`);
@@ -68,12 +68,12 @@ const Categories = () => {
          key: "action",
          render: (value) => (
             <Space size="middle">
-               <Link to={`/admin/update-category/${value.key}`}>
+               <Link to={`/admin/update-brand/${value.key}`}>
                   <Button>Edit</Button>
                </Link>
                <Button
-                  loading={deleteCategoryIsLoading}
-                  onClick={() => deleteCategory(value.key)}
+                  loading={deleteBrandIsLoading}
+                  onClick={() => deleteBrand(value.key)}
                >
                   Delete
                </Button>
@@ -83,19 +83,19 @@ const Categories = () => {
    ];
 
    useEffect(() => {
-      if (deleteCategoryError) {
-         rtqErrorMessageHandle(deleteCategoryError);
+      if (deleteBrandError) {
+         rtqErrorMessageHandle(deleteBrandError);
       }
 
-      if (deleteCategoryData) {
-         toast.success(deleteCategoryData.message);
+      if (deleteBrandData) {
+         toast.success(deleteBrandData.message);
       }
-   }, [deleteCategoryError, deleteCategoryData]);
+   }, [deleteBrandError, deleteBrandData]);
 
    return (
       <div className="categories">
          <div className="header">
-            <h2 className="title">Categories</h2>
+            <h2 className="title">Brands</h2>
             <div className="right-section">
                <Input
                   size="large"
@@ -126,12 +126,12 @@ const Categories = () => {
                      },
                   ]}
                />
-               <Link to="/admin/add-category">
+               <Link to="/admin/add-brand">
                   <Button
                      className="round-btn"
                      icon={<FaPlus />}
                   >
-                     Add Category
+                     Add Brand
                   </Button>
                </Link>
             </div>
@@ -148,4 +148,4 @@ const Categories = () => {
    );
 };
 
-export default Categories;
+export default Brands;

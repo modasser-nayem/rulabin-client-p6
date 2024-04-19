@@ -3,26 +3,24 @@ import FormWrapper from "../../../components/form/FromWrapper";
 import InputItem from "../../../components/form/InputItem";
 import "./style.css";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import {
-   useGetSingleCategoryQuery,
-   useUpdateCategoryMutation,
-} from "../../../redux/features/category/categoryApi";
 import { useEffect } from "react";
 import rtqErrorMessageHandle from "../../../utils/rtqErrorMessageHandle";
 import { toast } from "sonner";
 import { useNavigate, useParams } from "react-router-dom";
+import {
+   useGetSingleBrandQuery,
+   useUpdateBrandMutation,
+} from "../../../redux/features/Brand/brandApi";
 
-const UpdateCategory = () => {
+const UpdateBrand = () => {
    const params = useParams();
    const navigate = useNavigate();
-   const categoryId = params?.categoryId;
+   const brandId = params?.brandId;
 
-   const { data: currentCategoryData } = useGetSingleCategoryQuery(
-      categoryId as string
-   );
+   const { data: currentBrandData } = useGetSingleBrandQuery(brandId as string);
 
-   const [updateCategory, { isSuccess, isLoading, error, data }] =
-      useUpdateCategoryMutation();
+   const [updateBrand, { isSuccess, isLoading, error, data }] =
+      useUpdateBrandMutation();
 
    useEffect(() => {
       if (error) {
@@ -31,24 +29,24 @@ const UpdateCategory = () => {
 
       if (data) {
          toast.success(data.message);
-         navigate("/admin/categories");
+         navigate("/admin/brand");
       }
    }, [error, data, navigate]);
 
    const onSubmit: SubmitHandler<FieldValues> = (formData) => {
-      const updateCategoryData = {
+      const updateBrandData = {
          name: formData.name,
          icon: formData.icon,
       };
-      updateCategory({ id: categoryId as string, data: updateCategoryData });
+      updateBrand({ id: brandId as string, data: updateBrandData });
    };
 
    return (
       <div className="categories">
          <div className="header">
-            <h2 className="title">Update Category</h2>
+            <h2 className="title">Update Brand</h2>
          </div>
-         {!currentCategoryData?.data ? (
+         {!currentBrandData?.data ? (
             <p>Loading...</p>
          ) : (
             <div className="add-category-form">
@@ -57,8 +55,8 @@ const UpdateCategory = () => {
                      onSubmit={onSubmit}
                      success={isSuccess}
                      defaultValues={{
-                        name: currentCategoryData?.data.name,
-                        icon: currentCategoryData?.data.icon,
+                        name: currentBrandData?.data.name,
+                        icon: currentBrandData?.data.icon,
                      }}
                   >
                      <InputItem
@@ -79,7 +77,7 @@ const UpdateCategory = () => {
                         block
                         loading={isLoading}
                      >
-                        Update Category
+                        Update Brand
                      </Button>
                   </FormWrapper>
                </div>
@@ -89,4 +87,4 @@ const UpdateCategory = () => {
    );
 };
 
-export default UpdateCategory;
+export default UpdateBrand;

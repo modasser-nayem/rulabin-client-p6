@@ -2,9 +2,13 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import { TRoutesItem } from "../types/routes.types";
 import { MdDashboard, MdCategory } from "react-icons/md";
 import { HiUsers } from "react-icons/hi";
+import { TbBrandAirtable } from "react-icons/tb";
 import Categories from "../pages/Category/Categories";
 import AddCategory from "../pages/Category/AddCategory";
 import UpdateCategory from "../pages/Category/UpdateCategory";
+import Brands from "../pages/Brand/Brands";
+import AddBrand from "../pages/Brand/AddBrand";
+import UpdateBrand from "../pages/Brand/UpdateBrand";
 
 export const adminRouteItems: TRoutesItem[] = [
    {
@@ -30,6 +34,20 @@ export const adminRouteItems: TRoutesItem[] = [
    {
       path: "update-category/:categoryId",
       element: <UpdateCategory />,
+   },
+   {
+      name: "Brand",
+      path: "brand",
+      icon: <TbBrandAirtable />,
+      element: <Brands />,
+   },
+   {
+      path: "add-brand",
+      element: <AddBrand />,
+   },
+   {
+      path: "update-brand/:brandId",
+      element: <UpdateBrand />,
    },
    {
       name: "User Management",
