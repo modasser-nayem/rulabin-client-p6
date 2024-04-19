@@ -2,6 +2,13 @@ import { TRoute, TRoutesItem } from "../types/routes.types";
 
 export const routesGenerator = (routeItems: TRoutesItem[]) => {
    const routes = routeItems.reduce((acc: TRoute[], item) => {
+      if (item.index) {
+         acc.push({
+            index: item.index,
+            element: item.element,
+         });
+      }
+
       if (item.path) {
          acc.push({
             path: item.path,

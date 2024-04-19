@@ -1,0 +1,43 @@
+.navbar {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: honeydew;
+   width: 100%;
+   height: 80px;
+   padding: 0 40px;
+   position: sticky;
+}
+
+.navbar .brand-logo {
+   font-size: 1.7rem;
+   font-weight: 600;
+   text-decoration: none;
+   color: black;
+}
+
+.navbar .nav-right {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+}
+
+.navbar .nav-menu {
+   font-size: 16px;
+   display: flex;
+   align-items: center;
+   gap: 30px;
+}
+
+.nav-menu .nav-link {
+   text-decoration: none;
+   color: black;
+}
+
+.nav-menu .nav-link:hover {
+   color: var(--primary-color);
+}
+
+.nav-menu .active {
+   color: var(--primary-color);
+}

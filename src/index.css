@@ -11,12 +11,62 @@
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
+
+   --primary-color: #01866b;
 }
 
-body {
+* {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
+}
+
+.input-item {
+   padding: 0.7rem 1rem;
+   min-width: 200px;
+}
+
+.input-item:hover,
+.input-item:focus {
+   border-color: #019376;
+}
+
+.input-select {
+   height: 3rem;
+   font-size: 1rem;
+   min-width: 200px;
+}
+
+.input-select:hover,
+.input-select:focus {
+   border-color: #019376;
+}
+
+.square-btn {
+   background-color: #019376;
+   color: white;
+   font-size: 1rem;
+   padding: 1.5rem;
+   border: 1px solid;
+   display: flex;
+   align-items: center;
+}
+
+.round-btn {
+   background-color: #019376;
+   color: white;
+   font-size: 1rem;
+   padding: 1.5rem 1.8rem;
+   border-radius: 40px;
+   border: 1px solid;
+   display: flex;
+   align-items: center;
+}
+
+.square-btn:hover,
+.round-btn:hover {
+   background-color: #01866b !important;
+   color: white !important;
 }
 
 @media (prefers-color-scheme: light) {

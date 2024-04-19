@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import { routesGenerator } from "../utils/routesGenerator";
 import { adminRouteItems } from "./admin.routes";
 import DashboardLayout from "../components/layout/DashboardLayout";
@@ -7,57 +6,74 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import ResetPassword from "../pages/Auth/ResetPassword";
+import ProtectedRoute from "./ProtectedRoute";
+import LoginProtectedRoute from "./LoginProtectedRoute";
+import PublicLayout from "../components/layout/PublicLayout";
+import { sellerRouteItems } from "./seller.routes";
 
 export const router = createBrowserRouter([
    {
       path: "/",
-      element: <App />,
+      element: <PublicLayout />,
+      children: [
+         {
+            index: true,
+            element: <div>Customer Dashboard</div>,
+         },
+         {
+            path: "dashboard",
+            element: <div>Customer Dashboard</div>,
+         },
+      ],
    },
    {
       path: "/admin",
-      element: <DashboardLayout />,
+      element: (
+         <ProtectedRoute role="admin">
+            <DashboardLayout />
+         </ProtectedRoute>
+      ),
       children: routesGenerator(adminRouteItems),
    },
    {
       path: "/seller",
-      children: [
-         {
-            index: true,
-            element: <div>Seller Dashboard</div>,
-         },
-         {
-            path: "dashboard",
-            element: <div>Customer Dashboard</div>,
-         },
-      ],
-   },
-   {
-      path: "/customer",
-      children: [
-         {
-            index: true,
-            element: <div>Customer Dashboard</div>,
-         },
-         {
-            path: "dashboard",
-            element: <div>Customer Dashboard</div>,
-         },
-      ],
+      element: (
+         <ProtectedRoute role="seller">
+            <DashboardLayout />
+         </ProtectedRoute>
+      ),
+      children: routesGenerator(sellerRouteItems),
    },
    {
       path: "/login",
-      element: <Login />,
+      element: (
+         <LoginProtectedRoute>
+            <Login />
+         </LoginProtectedRoute>
+      ),
    },
    {
       path: "/register",
-      element: <Register />,
+      element: (
+         <LoginProtectedRoute>
+            <Register />
+         </LoginProtectedRoute>
+      ),
    },
    {
       path: "/forgot-password",
-      element: <ForgotPassword />,
+      element: (
+         <LoginProtectedRoute>
+            <ForgotPassword />
+         </LoginProtectedRoute>
+      ),
    },
    {
       path: "/auth/reset-password",
-      element: <ResetPassword />,
+      element: (
+         <LoginProtectedRoute>
+            <ResetPassword />
+         </LoginProtectedRoute>
+      ),
    },
 ]);
