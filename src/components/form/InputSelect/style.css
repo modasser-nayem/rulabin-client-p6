@@ -1,0 +1,12 @@
+.input-item-label {
+   font-weight: 700;
+}
+
+.select-input-item {
+   padding: 0;
+}
+
+.select-input-item:hover,
+.select-input-item:focus {
+   border-color: #019376;
+}
